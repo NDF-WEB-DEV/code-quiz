@@ -1,8 +1,17 @@
 //Global variables
-var startTime = 75;
-var topHeader = document.querySelector("leaderboard");
-var saveButton = document.querySelector("save");
-var savedName = document.getElementById("saved-name");
+const startTime = 75;
+var topHeader = document.getElementById("#leaderboard");
+var startButton = document.querySelector("#start");
+var saveButton = document.querySelector("#initials");
+var timerCountDown = document.querySelector("#timer-secs");
+var thisContainer = document.getElementById("#container");
+var thisIntro = document.getElementById("#intro");
+var questionaire = document.getElementById("#questions");
+var questTitles = document.getElementById("#question-title");
+var questionChoice = document.getElementById("#choices");
+var theResults = document.getElementById("#results");
+var theScore = document.querySelector("#finalScore");
+var theInitials = document.querySelector("#initials");
 
 //create id's variables - query selectors
 
