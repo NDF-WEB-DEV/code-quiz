@@ -1,17 +1,17 @@
 //Global variables for ID's - query selectors + getElementById
 var startTime = 75;
 var timerCountdown = document.querySelector(".timer");
-var topHeader = document.getElementById("#leaderboard");
+var topHeader = document.getElementById("leaderboard");
 var startButton = document.querySelector("#start");
 var saveButton = document.querySelector("#initials");
-var thisContainer = document.getElementById("#container");
-var thisIntro = document.getElementById("#intro");
-var questionaire = document.getElementById("#questions");
-var questTitles = document.getElementById("#question-title");
-var questionChoice = document.getElementById("#choices");
-var theResults = document.getElementById("#results");
+var thisContainer = document.getElementById("container");
+var thisIntro = document.getElementById("intro");
+var questionaire = document.getElementById("questions");
+var questTitles = document.getElementById("question-title");
+var questionChoice = document.getElementById("choices");
+var theResults = document.getElementById("results");
 var theScore = document.querySelector("#finalScore");
-var theInitials = document.querySelector("#initials");
+var theInitials = document.querySelector("initials");
 
 //questions var object that creates a list of each window in the quiz
 var questions = [
@@ -73,14 +73,17 @@ function countdown() {
 } initiation();      
       
 startButton.addEventListener("click", function() {
-    if(thisIntro.style.visibility == 'visible') {
-        thisIntro.style.visibility == 'visible';
+    if(thisIntro.className === 'show') {
+        console.log("Hello World");
+        thisIntro.className = 'hide';
+    } else {
+
     }
 });
 
-function hideIntroSection() {
+// function hideIntroSection() {
 
-}
+// }
 
 // startButton.onclick = function() {
 //     if(thisIntro.style.display == "block") {
