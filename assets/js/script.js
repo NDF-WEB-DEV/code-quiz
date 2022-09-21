@@ -1,9 +1,9 @@
-//Global variables
-const startTime = 75;
+//Global variables for ID's - query selectors + getElementById
+var startTime = 75;
+var timerCountdown = document.querySelector(".timer");
 var topHeader = document.getElementById("#leaderboard");
 var startButton = document.querySelector("#start");
 var saveButton = document.querySelector("#initials");
-var timerCountDown = document.querySelector("#timer-secs");
 var thisContainer = document.getElementById("#container");
 var thisIntro = document.getElementById("#intro");
 var questionaire = document.getElementById("#questions");
@@ -12,8 +12,6 @@ var questionChoice = document.getElementById("#choices");
 var theResults = document.getElementById("#results");
 var theScore = document.querySelector("#finalScore");
 var theInitials = document.querySelector("#initials");
-
-//create id's variables - query selectors
 
 //questions object
 var questions = [
@@ -42,23 +40,48 @@ var questions = [
         choices: ['JavaScript','terminal/bash','for loops','console.log'],
         answer: "console.log",
     }
-]
+];
 
-setInterval(timerCountDown, 1000);
-// Timer Function
-function timerCountDown() {
-    const secTimer = new Date ();
-    document.getElementById("timer-sec").innerHTML = d.getSeconds();
+//initialization Function
+function initiation() {
+    countdown();
 }
+
+clearInterval();
+
+function countdown() {
+    // Sets interval in variable
+      var timerInterval = setInterval(function() {
+        console.log("Time: " + startTime);
+
+        timerCountdown.textContent = "Time: " + startTime;
+        startTime--;
+        if(startTime === 0) {
+            // Stops execution of action at set interval
+            clearInterval(timerInterval);
+            // Calls function to create and append image
+            sendMessage("Game Over");
+          }
+}, 1000);
+} initiation();      
+      
+
+//Timer Function
+// function timerCountDown() {
+//     document.getElementById("timer-secs").innerHTML = 75;
+//     startTime--;
+//     console.log(startTime);
+//     setInterval(timerCountDown, 1000);
+// } 1000;
 
 //start button create event listener, send it to start 
 
 //this function starts quiz
-function startQuiz() {
+// function startQuiz() {
 //When I start the quiz it hides intro section
 //First question in questions var shows up
 // call start timer function
-}
+// }
 
 //This function should displays the questions and buttons
 //only bring questions
@@ -70,6 +93,4 @@ function startQuiz() {
 
 //A function to end the game
 
-//A function to kepp the scores in a list data structure 
-
-//A function to clear all scores
+//A function to kepp the scores in a list data structure
