@@ -2,9 +2,15 @@
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 body {
-    
+    box-sizing:border-box;
+    padding: 50px;
+    margin: 0;
 }
 
 .hide {
     display: none;
+}
+
+.show {
+    visibility: visible;
 }

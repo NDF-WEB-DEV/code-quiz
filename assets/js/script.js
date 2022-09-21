@@ -13,10 +13,10 @@ var theResults = document.getElementById("#results");
 var theScore = document.querySelector("#finalScore");
 var theInitials = document.querySelector("#initials");
 
-//questions object
+//questions var object that creates a list of each window in the quiz
 var questions = [
     {
-        title: "Commonly used data types DO Not Include", 
+        title: "Commonly used data types DO Not Include:", 
         choices: ['string','booleans','alerts','numbers'],
         answer: "alerts",
     },
@@ -44,37 +44,85 @@ var questions = [
 
 //initialization Function
 function initiation() {
-    countdown();
+    landingPageTime();
 }
 
-clearInterval();
+//functions that sets startTime to = 0
+function landingPageTime() {
+    startTime = 0;
+    timerCountdown.textContent = "Time: " + startTime;  //when landing page loads timer is at 0 before starting quiz
+}
+
+// function initiation() {
+//     landingPageTime();
+//     countdown();
+// }
 
 function countdown() {
-    // Sets interval in variable
-      var timerInterval = setInterval(function() {
-        console.log("Time: " + startTime);
-
-        timerCountdown.textContent = "Time: " + startTime;
+      var timerInterval = setInterval(function() { // Sets interval in timer var
+        // startTime = 0;  //when landing page loads timer is at 0
+        // console.log("Time: " + startTime);  //Added for checking purposes only
+        timerCountdown.textContent = "Time: " + startTime;  //This line displays the text + remaining time
         startTime--;
         if(startTime === 0) {
-            // Stops execution of action at set interval
-            clearInterval(timerInterval);
-            // Calls function to create and append image
-            sendMessage("Game Over");
+            clearInterval(timerInterval); // Stops execution of action at set interval
+            sendMessage("Game Over"); // Calls function to create and append image
+
           }
 }, 1000);
 } initiation();      
       
+startButton.addEventListener("click", function() {
+    if(thisIntro.style.visibility == 'visible') {
+        thisIntro.style.visibility == 'visible';
+    }
+});
 
-//Timer Function
-// function timerCountDown() {
-//     document.getElementById("timer-secs").innerHTML = 75;
-//     startTime--;
-//     console.log(startTime);
-//     setInterval(timerCountDown, 1000);
-// } 1000;
+function hideIntroSection() {
 
-//start button create event listener, send it to start 
+}
+
+// startButton.onclick = function() {
+//     if(thisIntro.style.display == "block") {
+//         thisIntro.style.display == "none";
+//     } 
+//     else {
+//         thisIntro.style.display == "block";
+//     }
+// };
+
+//start button creates event listener, and starts the quiz
+//when I press the start button 
+// The first object from the list of the questions array is shown
+//and the leaderboard id is hidden
+// startButton.addEventListener("onclick", function() {
+//     thisIntro.style.display === 'none'; //
+//     questionaire.style.display === 'show'; //unhide var questionaire
+//     //countdown(); //countdown function is called to start the countdown from 75 seconds
+//     //start quiz button is clicked then
+//     //timer starts
+//     //First title-question appears
+//     //List of multiple choice appears
+//     //Multiple choice selection turns puple when hover over button
+//     //when clicked on a multiple choice
+//     //Then multiple choice array [] is compared with answer
+//     //if multiplechoice array [] selection === answers
+//     //then display text == "Correct!"
+//     //else display text == "wrong"
+
+// }
+
+// function hideIntro(event) {
+//     // event.stopPropagation();
+//     event.currentTarget.setAttribute(
+//       "style",
+//       "display: none",
+//     )
+//   }
+  
+//   thisIntro.addEventListener("click", hideIntro));
+
+
 
 //this function starts quiz
 // function startQuiz() {
@@ -94,3 +142,7 @@ function countdown() {
 //A function to end the game
 
 //A function to kepp the scores in a list data structure
+
+
+
+  
