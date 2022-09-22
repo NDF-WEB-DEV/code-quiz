@@ -45,11 +45,11 @@ var questions = [
 
 //adding event listener for each time a choice is clicked to move on to the next question
 questionaire.addEventListener("click", function(event) {
-    for (var i = 0; i < questionaire.lenght; i++) {    //as we go through the array questions
+    questionaire.className === 'hide';                  //id questionaire (questions) section hides
+    theResults.className === 'show';                    //id theresults (results) section shows up
+    for (var i = 0; i < questionaire.length; i++) {    //as we go through the array questions
         questionaire[i].textContent;                   //when I click on one of the choices
         rightOrWrongAnswer();                          //function rightOrWrongAnswer is called
-        questionaire.className === 'hide';             //id questionaire (questions) section hides
-        theResults.className === 'show';               //id theresults (results) section shows up
     } 
 });
 

@@ -13,3 +13,7 @@ N/A
 
 ## License
 N/A
+
+## Images
+See images directory for screenshot. 
+![Alt Initial Project] (../images/project-staus-09-21-22.png )
