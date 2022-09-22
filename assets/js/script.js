@@ -15,7 +15,7 @@ var theScore = document.querySelector("#finalScore");
 var theInitials = document.querySelector("initials");
 
 //questions var object that creates a list of each window in the quiz
-var questions = ['title','choices','answer',
+var questions = [
     {
         title: "Commonly used data types DO Not Include:", 
         choices: ['string','booleans','alerts','numbers'],
@@ -42,6 +42,16 @@ var questions = ['title','choices','answer',
         answer: "console.log",
     }
 ];
+
+//adding event listener for each time a choice is clicked to move on to the next question
+questionaire.addEventListener("click", function(event) {
+    for (var i = 0; i < questionaire.lenght; i++) {    //as we go through the array questions
+        questionaire[i].textContent;                   //when I click on one of the choices
+        rightOrWrongAnswer();                          //function rightOrWrongAnswer is called
+        questionaire.className === 'hide';             //id questionaire (questions) section hides
+        theResults.className === 'show';               //id theresults (results) section shows up
+    } 
+});
 
 //initialization Function
 function initiation() {

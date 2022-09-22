@@ -21,20 +21,20 @@
         </div>
         <div class="timer"></div>
         <div id="container">
-
+          <!-- shows only at page load and hides when start quiz is clicked -->
           <div id="intro" class="show">
             <h1>Coding Quiz Challange</h1>
             <p>Try to answer the following code-related questions witin the time limit.
                Keep in mind that incorrect answers will penalize your score/time by ten seconds!.</p>
             <button id="start">Start Quiz</button>
           </div>
-
+          <!-- Shows up when start quiz is clicked and hides on last iteration of questions array -->
           <div id="questions" class="hide">
             <div id="question-title">Hi I am showing up!</div>
             <div id="choices"></div>
             <div id="answer">Answer is: </div>
           </div>
-
+          <!-- shows up after for loop of questions is done -->
           <div id="results" class="hide">
             <h2>All done!</h2>
             <p>Your final score is: <span id="finalScore"></span></p>
