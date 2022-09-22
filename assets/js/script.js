@@ -9,12 +9,13 @@ var thisIntro = document.getElementById("intro");
 var questionaire = document.getElementById("questions");
 var questTitles = document.getElementById("question-title");
 var questionChoice = document.getElementById("choices");
+var response = document.getElementById("answer")
 var theResults = document.getElementById("results");
 var theScore = document.querySelector("#finalScore");
 var theInitials = document.querySelector("initials");
 
 //questions var object that creates a list of each window in the quiz
-var questions = [
+var questions = ['title','choices','answer',
     {
         title: "Commonly used data types DO Not Include:", 
         choices: ['string','booleans','alerts','numbers'],
@@ -53,94 +54,50 @@ function landingPageTime() {
     timerCountdown.textContent = "Time: " + startTime;  //when landing page loads timer is at 0 before starting quiz
 }
 
-// function initiation() {
-//     landingPageTime();
-//     countdown();
-// }
-
+// function for the timer
 function countdown() {
-      var timerInterval = setInterval(function() { // Sets interval in timer var
-        // startTime = 0;  //when landing page loads timer is at 0
-        // console.log("Time: " + startTime);  //Added for checking purposes only
+      var timerInterval = setInterval(function() {          // Sets interval in timer var
         timerCountdown.textContent = "Time: " + startTime;  //This line displays the text + remaining time
-        startTime--;
-        if(startTime === 0) {
-            clearInterval(timerInterval); // Stops execution of action at set interval
-            sendMessage("Game Over"); // Calls function to create and append image
-
+        startTime--;                                        //start time starts decreasing
+        if(startTime === 0) {                               //when time is 0 
+            clearInterval(timerInterval);                   // Execution stops action of set interval
+            theResults.className === 'show';
           }
 }, 1000);
 } initiation();      
-      
-startButton.addEventListener("click", function() {
-    if(thisIntro.className === 'show') {
-        console.log("Hello World");
-        thisIntro.className = 'hide';
+
+//event listener for start button
+startButton.addEventListener("click", function() {  //creating an event listener to capture when the start button is clicked
+    if(thisIntro.className === 'show') {            //if the intro section is showing up in the page
+        thisIntro.className = 'hide';               //when I click the Start Quiz button then the intro section
     } else {
 
     }
+    questionaire.className = 'show';
+    countdown();
 });
 
-// function hideIntroSection() {
+//This function counts the right or wrong answers
+function rightOrWrongAnswer() {
+    var plusScore;                              //Keeps count of correct answers
+    if(questions[choices] === answer) {         //if the choice MATCHES the right answer
+        answer.textContent = "Correct!";        // then print Correct!
+        plusScore++;                            // add 1 to the plusScore var
+    }
+    else if (questions[choices] !== answer) {   //if the choice DOES NOT match the right answer
+        answer.textContent = "Wrong!";          //Then print Wrong! on the div id = answer
+    }
+    plusScore == theScore;                      //Keeps track of final score
+    return answer;
+}
 
-// }
-
-// startButton.onclick = function() {
-//     if(thisIntro.style.display == "block") {
-//         thisIntro.style.display == "none";
-//     } 
-//     else {
-//         thisIntro.style.display == "block";
-//     }
-// };
-
-//start button creates event listener, and starts the quiz
-//when I press the start button 
-// The first object from the list of the questions array is shown
-//and the leaderboard id is hidden
-// startButton.addEventListener("onclick", function() {
-//     thisIntro.style.display === 'none'; //
-//     questionaire.style.display === 'show'; //unhide var questionaire
-//     //countdown(); //countdown function is called to start the countdown from 75 seconds
-//     //start quiz button is clicked then
-//     //timer starts
-//     //First title-question appears
-//     //List of multiple choice appears
-//     //Multiple choice selection turns puple when hover over button
-//     //when clicked on a multiple choice
-//     //Then multiple choice array [] is compared with answer
-//     //if multiplechoice array [] selection === answers
-//     //then display text == "Correct!"
-//     //else display text == "wrong"
-
-// }
-
-// function hideIntro(event) {
-//     // event.stopPropagation();
-//     event.currentTarget.setAttribute(
-//       "style",
-//       "display: none",
-//     )
-//   }
-  
-//   thisIntro.addEventListener("click", hideIntro));
+// Updates and prints finalScore on results div id=results
+function finalScore() {
+    theScore.textContent; //prints final score on results div page
+}
 
 
 
-//this function starts quiz
-// function startQuiz() {
-//When I start the quiz it hides intro section
-//First question in questions var shows up
-// call start timer function
-// }
-
-//This function should displays the questions and buttons
-//only bring questions
-
-//another function to compare if the answer is right or wrong
-//Ask myself do I still have questions 
-//Ask myself do i still have time
-//end game
 
 //A function to end the game
 
