@@ -7,11 +7,18 @@ body {
     margin: 0;
 }
 
+/** Content **/
 .hide {
     display: none;
 }
-
-.show {
-    /* visibility: visible; */
-    display: block;
+.show-intro {
+    visibility: visible;
 }
+
+/** form **/
+.form-input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+/** high scores page ** /

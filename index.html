@@ -14,32 +14,43 @@
 
 <body>
     <!-- <header>not in use for this application</header> -->
+
     <!-- Top section to hold the timer and link to accumulated scores -->
         <div id="leaderboard" class="leaderboard">
             <a href="scores.html">View High Scores</a>
             <p id="timer-secs" class="timer"></p>
         </div>
-        <div class="timer"></div>
+
+        <!-- <div class="timer"><span id="time"></span></div> -->
+        <div class="timer">Time: <span id="time">0</span></div>
         <div id="container">
+
           <!-- shows only at page load and hides when start quiz is clicked -->
-          <div id="intro" class="show">
-            <h1>Coding Quiz Challange</h1>
+          <div id="intro" class="show-intro">
+            <h1>Coding Quiz Challenge</h1>
             <p>Try to answer the following code-related questions witin the time limit.
                Keep in mind that incorrect answers will penalize your score/time by ten seconds!.</p>
             <button id="start">Start Quiz</button>
           </div>
+
           <!-- Shows up when start quiz is clicked and hides on last iteration of questions array -->
           <div id="questions" class="hide">
-            <div id="question-title">Hi I am showing up!</div>
+            <div id="question-title"></div>
             <div id="choices"></div>
             <div id="answer">Answer is: </div>
           </div>
+          
           <!-- shows up after for loop of questions is done -->
           <div id="results" class="hide">
             <h2>All done!</h2>
             <p>Your final score is: <span id="finalScore"></span></p>
-            <p>Enter initials: <input id="initials" type="text" /><button>Save</button></p>
-            <hr>
+            <form action="./highScores.html" method="POST" >
+              <div class="form-input">
+                <label>Enter initials</label>
+                <input type="text" id="initials" name="initials" />
+              </div>
+              <button id="submit">Submit</button>
+            </form>
           </div>
         </div>  
   <script src="./assets/js/script.js"></script>

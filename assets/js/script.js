@@ -13,8 +13,9 @@ var response = document.getElementById("answer")
 var theResults = document.getElementById("results");
 var theScore = document.querySelector("#finalScore");
 var theInitials = document.querySelector("initials");
+var qIndex = 0;
 
-//questions var object that creates a list of each window in the quiz
+//questions var object array that creates a list of each window in the quiz
 var questions = [
     {
         title: "Commonly used data types DO Not Include:", 
@@ -43,49 +44,53 @@ var questions = [
     }
 ];
 
-//adding event listener for each time a choice is clicked to move on to the next question
-questionaire.addEventListener("click", function(event) {
-    questionaire.className === 'hide';                  //id questionaire (questions) section hides
-    theResults.className === 'show';                    //id theresults (results) section shows up
-    for (var i = 0; i < questionaire.length; i++) {    //as we go through the array questions
-        questionaire[i].textContent;                   //when I click on one of the choices
-        rightOrWrongAnswer();                          //function rightOrWrongAnswer is called
-    } 
-});
-
-//initialization Function
+//initialization of Functions
 function initiation() {
-    landingPageTime();
+    landingPageLoad();
+    countdown();
+    startQuiz();
 }
 
-//functions that sets startTime to = 0
-function landingPageTime() {
-    startTime = 0;
-    timerCountdown.textContent = "Time: " + startTime;  //when landing page loads timer is at 0 before starting quiz
+//first sections show up at page load
+function landingPageLoad() {
+    topHeader.setAttribute("class","show-intro");
+    thisIntro.setAttribute("class","show-intro");
+    startButton.setAttribute("class","show-intro");
+    startButton.addEventListener("click", startQuiz());  //Eevent listener to capture when the start button is clicked and calls the startquiz function
 }
 
 // function for the timer
 function countdown() {
-      var timerInterval = setInterval(function() {          // Sets interval in timer var
-        timerCountdown.textContent = "Time: " + startTime;  //This line displays the text + remaining time
-        startTime--;                                        //start time starts decreasing
-        if(startTime === 0) {                               //when time is 0 
-            clearInterval(timerInterval);                   // Execution stops action of set interval
-            theResults.className === 'show';
+        startTime--;                                //Decreases the timer by 1 second from 75
+        timerCountdown.textContent = startTime;     //This line displays the text + remaining time in timer
+        if(startTime <= 0) {                        //If timer reaches 0 then the end game fuction is called and the game stops         
+            endGame();                                        
           }
-}, 1000);
-} initiation();      
+}      
 
-//event listener for start button
-startButton.addEventListener("click", function() {  //creating an event listener to capture when the start button is clicked
-    if(thisIntro.className === 'show') {            //if the intro section is showing up in the page
-        thisIntro.className = 'hide';               //when I click the Start Quiz button then the intro section
-    } else {
+//Start the questions section of the Quiz and hides the intro section of the quiz
+function startQuiz() {
+    thisIntro.setAttribute("class","hide");                    //hides the intro section of the quiz
+    questionaire.removeAttribute("class");                     //Questions section are visible
+    var timerInterval = setInterval(countdown, 1000);          // Sets interval in timer var
+    timerCountdown.textContent = startTime;                    //Timer is activated
+    getQuestions();                                            //get questions function is called
+}
 
-    }
-    questionaire.className = 'show';
-    countdown();
-});
+
+function getQuestions() {
+    var currentQ = questions[qIndex];                           //local variable to hold index of each question in the questions array
+    questTitles.textContent = currentQ.title;                   //Returning Title variable content
+    questionChoice.innerHTML = "";                              //clearing line # 32 because all of the above
+    currentQ.choices.forEach(function(choice,i){                //iterating through the choices 
+        var choiceBtn = document.createElement("button");       //created element button on demand for each of the choices
+        choiceBtn.setAttribute("class","choice");               //created class: choice
+        choiceBtn.setAttribute("value",choice);                 //collecting all choices in array choice
+        choiceBtn.textContent = i + 1 + ". " + choice;          //Printing the choices with # values in a list
+        choiceBtn.onclick = rightOrWrongAnswer;                 //Calling the right or wrong funtion to check of answer is correct
+        questionChoice.appendChild(choiceBtn);                  //Inserts selection into the var choiceBtn
+    })
+}
 
 //This function counts the right or wrong answers
 function rightOrWrongAnswer() {
@@ -106,13 +111,35 @@ function finalScore() {
     theScore.textContent; //prints final score on results div page
 }
 
+//A function to endGame
+function endGame() {
+    if(startTime <= 0) {                        //If the counter reaches 0
+        endGame();                              //End the game          
+      }
+      theResults.removeAttribute("class");      //The results page shows up
+} 
+
+//Used at the results id section page
+function endGamePage() {
+    var gameScore = localStorage.getItem("score");                  //stores the score for ongoing game
+    var thisGameInitials = localStorage.getItem("initials");        //stores initials for player of for ongoing game
+    theScore.textContent = score;                                   //Prints the score
+    theInitials.textContent = initials;                             //prints the initials
+  }
 
 
-
-//A function to end the game
-
-//A function to kepp the scores in a list data structure
-
+//A function to keep the list of scores up to 5 games
+function scoresList() {
+    var allGamesScores = [                          //declared var array to store games stats
+        {
+            gameNumber: "",                         //stores game number (tries)
+            gameIntitals: " ",                      //stores game initials
+            gamescore: " "                          //stores game score
+        }
+    ]
+//need to write while loop to store game stats on high scores game
+//display or print final stats
+}
 
 
   
