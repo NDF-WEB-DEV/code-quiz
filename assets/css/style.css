@@ -2,16 +2,48 @@
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 body {
-    box-sizing:border-box;
-    padding: 50px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 20px;
     margin: 0;
+}
+/** Top Section **/
+.tops {
+    display: flex;
+    justify-content:space-between;
+}
+
+.tops .leaderboard a {
+    color: purple;
+    text-decoration: none;
+}
+
+/** INTRO SECTION **/
+.container-intro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+.container-intro p {
+    line-height: auto;
+}
+.container-intro .intro #start{
+    width: auto;
+    padding: 10px 20px 10px 20px;
+    color: #ffffff;
+    background-color: purple;
+    border-radius: 10px;
+    font-size: 18px;
+    margin-top: 30px;
 }
 
 /** Content **/
 .hide {
     display: none;
 }
-.show-intro {
+.show {
     visibility: visible;
 }
 
@@ -21,4 +53,19 @@ body {
     margin-bottom: 10px;
   }
 
-/** high scores page ** /
+/** Scores Section **/
+.container-scores {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+.container-scores .btns #goBackBtn, #clearListBtn  {
+    width: auto;
+    padding: 10px 20px 10px 20px;
+    color: #ffffff;
+    background-color: purple;
+    border-radius: 10px;
+    font-size: 18px;
+    margin-top: 30px;
+}

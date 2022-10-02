@@ -16,43 +16,71 @@
     <!-- <header>not in use for this application</header> -->
 
     <!-- Top section to hold the timer and link to accumulated scores -->
-        <div id="leaderboard" class="leaderboard">
-            <a href="scores.html">View High Scores</a>
-            <p id="timer-secs" class="timer"></p>
+        <!-- Box 1 -->
+        <div id="tops" class="tops">
+            <div id="leaderboard" class="leaderboard">
+              <a href="scores.html">View High Scores</a>
+              <p id="timer-secs" class="timer"></p>
+            </div>
+            <!-- Box 2 -->
+            <div class="timer">
+              Time: <span id="time">0</span>
+            </div>
         </div>
+<!-- ******* INTRO ***************************************************************************** -->
 
-        <!-- <div class="timer"><span id="time"></span></div> -->
-        <div class="timer">Time: <span id="time">0</span></div>
-        <div id="container">
-
+        <div id="container-intro" class="container-intro">
           <!-- shows only at page load and hides when start quiz is clicked -->
-          <div id="intro" class="show-intro">
+          <div id="intro" class="intro">
             <h1>Coding Quiz Challenge</h1>
-            <p>Try to answer the following code-related questions witin the time limit.
-               Keep in mind that incorrect answers will penalize your score/time by ten seconds!.</p>
+            <p>Try to answer the following code-related questions witin the time limit.</p>
+               <p>Keep in mind that incorrect answers will penalize your score/time by ten seconds!.</p>
             <button id="start">Start Quiz</button>
           </div>
+        </div>
 
-          <!-- Shows up when start quiz is clicked and hides on last iteration of questions array -->
-          <div id="questions" class="hide">
-            <div id="question-title"></div>
-            <div id="choices"></div>
-            <div id="answer">Answer is: </div>
+<!-- ******* QUESTIONAIRE SECTION ***************************************************************************** -->
+
+          <div id="container-questions">
+            <!-- Shows up when start quiz is clicked and hides on last iteration of questions array -->
+            <div id="questions" class="hide">
+              <div id="question-title"></div>
+              <div id="choices"></div>
+              <div id="answer">Answer is: </div>
+            </div>
           </div>
+
+<!-- ******* RESULTS SECTION ***************************************************************************** -->          
           
           <!-- shows up after for loop of questions is done -->
-          <div id="results" class="hide">
+          <div id="results" class="results hide">
             <h2>All done!</h2>
             <p>Your final score is: <span id="finalScore"></span></p>
-            <form action="./highScores.html" method="POST" >
-              <div class="form-input">
-                <label>Enter initials</label>
-                <input type="text" id="initials" name="initials" />
-              </div>
-              <button id="submit">Submit</button>
-            </form>
+              <form action="./highScores.html" method="POST" >
+                <div class="form-input">
+                  <label>Enter initials</label>
+                  <input type="text" id="initials" class="initials" name="initials" />
+                </div>
+                <button id="submit">Submit</button>
+              </form>
           </div>
-        </div>  
+
+<!-- ********* ALL DONE SECTION ********************************************************************************************** -->          
+          <div id="container-scores" class="container-scores hide">
+            <div>
+              <h2>High Scores</h2>
+            </div>
+            <div>
+              <ol>
+                <a id="highScore" class="highScore"></a>
+              </ol>
+            </div>
+            <div id="btns" class="btns">
+              <button id="goBackBtn" class="goBackBtn">Go Back</button>
+              <button id="clearListBtn" class="clearListBtn">Clear High Scores</button>
+            </div>
+          </div>
+
   <script src="./assets/js/script.js"></script>
 </body>
 <!-- <footer> Not required for this application </footer> -->

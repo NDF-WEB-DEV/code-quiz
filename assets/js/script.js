@@ -1,18 +1,22 @@
 //Global variables for ID's - query selectors + getElementById
 var startTime = 75;
 var timerCountdown = document.querySelector(".timer");
+var tops = document.getElementById("tops");
 var topHeader = document.getElementById("leaderboard");
-var startButton = document.querySelector("#start");
-var saveButton = document.querySelector("#initials");
+var containerIntro = document.getElementById("container-intro");
+var startButton = document.querySelector(".start");
+var saveButton = document.querySelector(".initials");
 var thisContainer = document.getElementById("container");
 var thisIntro = document.getElementById("intro");
 var questionaire = document.getElementById("questions");
+var containerQuestions = document.getElementById("container-questions")
 var questTitles = document.getElementById("question-title");
 var questionChoice = document.getElementById("choices");
-var response = document.getElementById("answer")
+var response = document.getElementById("answer");
 var theResults = document.getElementById("results");
-var theScore = document.querySelector("#finalScore");
+var theScore = document.querySelector(".finalScore");
 var theInitials = document.querySelector("initials");
+var containerScores = document.getElementById("container-scores");
 var qIndex = 0;
 
 //questions var object array that creates a list of each window in the quiz
@@ -53,13 +57,14 @@ function initiation() {
 
 //first sections show up at page load
 function landingPageLoad() {
-    topHeader.setAttribute("class","show-intro");
-    thisIntro.setAttribute("class","show-intro");
-    startButton.setAttribute("class","show-intro");
-    startButton.addEventListener("click", startQuiz());  //Eevent listener to capture when the start button is clicked and calls the startquiz function
+    tops.setAttribute("class","show");
+    containerIntro.setAttribute("class","show");
+    startButton.setAttribute("class","show");
 }
 
-// function for the timer
+
+
+// Timer Function
 function countdown() {
         startTime--;                                //Decreases the timer by 1 second from 75
         timerCountdown.textContent = startTime;     //This line displays the text + remaining time in timer
@@ -70,8 +75,11 @@ function countdown() {
 
 //Start the questions section of the Quiz and hides the intro section of the quiz
 function startQuiz() {
-    thisIntro.setAttribute("class","hide");                    //hides the intro section of the quiz
-    questionaire.removeAttribute("class");                     //Questions section are visible
+    //Event listener to capture when the start button is clicked and calls the startquiz function
+    startButton.addEventListener("click", startQuiz());  
+    
+    containerIntro.setAttribute("class","hide");               //hides the intro section of the quiz
+    containerQuestions.setAttribute("class","show");           //Questions section are visible
     var timerInterval = setInterval(countdown, 1000);          // Sets interval in timer var
     timerCountdown.textContent = startTime;                    //Timer is activated
     getQuestions();                                            //get questions function is called
@@ -134,7 +142,7 @@ function scoresList() {
         {
             gameNumber: "",                         //stores game number (tries)
             gameIntitals: " ",                      //stores game initials
-            gamescore: " "                          //stores game score
+            gameScore: " "                          //stores game score
         }
     ]
 //need to write while loop to store game stats on high scores game
@@ -142,4 +150,3 @@ function scoresList() {
 }
 
 
-  
