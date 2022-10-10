@@ -1,23 +1,36 @@
-//Global variables for ID's - query selectors + getElementById
+//JS Global Vars
+var questionsIndex = 0;
 var startTime = 75;
-var timerCountdown = document.querySelector(".timer");
+
+// TOPS SECTION VARS
 var tops = document.getElementById("tops");
 var topHeader = document.getElementById("leaderboard");
+var highScores = document.getElementById("highScores");
+var timeAtZero = document.getElementById("timer");
+
+// INTRO SECTION VARS
 var containerIntro = document.getElementById("container-intro");
-var startButton = document.querySelector(".start");
-var saveButton = document.querySelector(".initials");
-var thisContainer = document.getElementById("container");
-var thisIntro = document.getElementById("intro");
-var questionaire = document.getElementById("questions");
-var containerQuestions = document.getElementById("container-questions")
-var questTitles = document.getElementById("question-title");
+var startButton = document.getElementById("startButton");
+
+// QUESTIONAIRE SECTION
+var containerQuestions = document.getElementById("container-questions");
+var questionTitle = document.getElementById("questionTitle");
 var questionChoice = document.getElementById("choices");
-var response = document.getElementById("answer");
-var theResults = document.getElementById("results");
-var theScore = document.querySelector(".finalScore");
-var theInitials = document.querySelector("initials");
-var containerScores = document.getElementById("container-scores");
-var qIndex = 0;
+var answer = document.getElementById("answer");
+var timerCountdown = document.getElementById("timerCountdown");
+
+//RESULTS SECTION
+var results = document.getElementById("results");
+var finalScore = document.getElementById("finalScore");
+var initials = document.getElementById("initials");
+var submitBtn = document.getElementById("submitBtn");
+
+//HIGH SCORES SECTION
+var highScoresSection = document.getElementById("highScoresSection");
+var highScoresList = document.getElementById("highScoreList");
+var btnsSection = document.getElementById("btnsSection");
+var goBackBTN = document.getElementById("goBackBtn");
+var clearlistBtn = document.getElementById("clearListBtn");
 
 //questions var object array that creates a list of each window in the quiz
 var questions = [
@@ -48,105 +61,111 @@ var questions = [
     }
 ];
 
-//initialization of Functions
-function initiation() {
-    landingPageLoad();
-    countdown();
-    startQuiz();
-}
-
-//first sections show up at page load
-function landingPageLoad() {
-    tops.setAttribute("class","show");
-    containerIntro.setAttribute("class","show");
-    startButton.setAttribute("class","show");
-}
-
-
-
-// Timer Function
+// Helper Timer Function
 function countdown() {
         startTime--;                                //Decreases the timer by 1 second from 75
         timerCountdown.textContent = startTime;     //This line displays the text + remaining time in timer
         if(startTime <= 0) {                        //If timer reaches 0 then the end game fuction is called and the game stops         
             endGame();                                        
           }
-}      
+}    
 
-//Start the questions section of the Quiz and hides the intro section of the quiz
+startButton.addEventListener("click", startQuiz);  
+
+// 1. INTRO SECTION STARTS 
 function startQuiz() {
-    //Event listener to capture when the start button is clicked and calls the startquiz function
-    startButton.addEventListener("click", startQuiz());  
-    
-    containerIntro.setAttribute("class","hide");               //hides the intro section of the quiz
+    containerIntro.setAttribute("class","hide"); 
+    timeAtZero.setAttribute("class","hide"); 
     containerQuestions.setAttribute("class","show");           //Questions section are visible
     var timerInterval = setInterval(countdown, 1000);          // Sets interval in timer var
     timerCountdown.textContent = startTime;                    //Timer is activated
     getQuestions();                                            //get questions function is called
 }
 
-
+// 2. QUESTIONS + ANSWERS SECTION
 function getQuestions() {
-    var currentQ = questions[qIndex];                           //local variable to hold index of each question in the questions array
-    questTitles.textContent = currentQ.title;                   //Returning Title variable content
-    questionChoice.innerHTML = "";                              //clearing line # 32 because all of the above
-    currentQ.choices.forEach(function(choice,i){                //iterating through the choices 
-        var choiceBtn = document.createElement("button");       //created element button on demand for each of the choices
-        choiceBtn.setAttribute("class","choice");               //created class: choice
+    var currentQ = questions[questionsIndex];                   //local variable to hold index of each question in the questions array
+    questionTitle.textContent = currentQ.title;                 //Returning Title variable content
+    questionChoice.innerHTML = "";                              //clearing the variable
+    currentQ.choices.forEach(function(choice, index) {          //iterating through the choices 
+        var choiceBtn = document.createElement("button");       //created button element on demand for each of the choices
         choiceBtn.setAttribute("value",choice);                 //collecting all choices in array choice
-        choiceBtn.textContent = i + 1 + ". " + choice;          //Printing the choices with # values in a list
-        choiceBtn.onclick = rightOrWrongAnswer;                 //Calling the right or wrong funtion to check of answer is correct
+        choiceBtn.textContent = index + 1 + ". " + choice;      //Displaying the choices with # values in a list
+        choiceBtn.onclick = rightOrWrongAnswer;                 //Calling the right or wrong function to check if answer is correct
         questionChoice.appendChild(choiceBtn);                  //Inserts selection into the var choiceBtn
     })
 }
 
-//This function counts the right or wrong answers
-function rightOrWrongAnswer() {
-    var plusScore;                              //Keeps count of correct answers
-    if(questions[choices] === answer) {         //if the choice MATCHES the right answer
-        answer.textContent = "Correct!";        // then print Correct!
+// Helper function 
+function rightOrWrongAnswer(event) {
+    var btn = event.target;
+       
+    if(!btn.matches(".choice")){  //if we click a button and doesn't have the right choice 
+        return;                   //stay on question page
+    }
+    //Keeps count of correct answers
+    if(btn.value !== questions[questionsIndex].answer) { //if the choice does not match the right answer
+        startTime = startTime - 1;  //time is decreased by 1
+        if(startTime <= 0) {         //if timer is at zero 
+            startTime = 0;          //then start time is set to zero
+        }
+        timerCountdown.textContent = startTime;  //The time is updated
+        answer.textContent = "Wrong!";          // then display wrong answer
         plusScore++;                            // add 1 to the plusScore var
     }
-    else if (questions[choices] !== answer) {   //if the choice DOES NOT match the right answer
-        answer.textContent = "Wrong!";          //Then print Wrong! on the div id = answer
+    else {                                      //if the choice matches the right answer
+        answer.textContent = "Correct!";        //Then print Correct! on the div id = answer
     }
-    plusScore == theScore;                      //Keeps track of final score
-    return answer;
+    questionsIndex++; //move to the next question        
+    if((startTime <= 0) || (questionsIndex === questions.length)) {  //if start time is zero or there are no more questions to go through
+        gameEnd();                                                   // end the game
+    }
+    else {
+        getQuestions();                                                 // else continue
+    }
 }
 
 // Updates and prints finalScore on results div id=results
 function finalScore() {
-    theScore.textContent; //prints final score on results div page
-}
-
-//A function to endGame
-function endGame() {
-    if(startTime <= 0) {                        //If the counter reaches 0
-        endGame();                              //End the game          
-      }
-      theResults.removeAttribute("class");      //The results page shows up
+    finalScore.textContent; 
 } 
 
 //Used at the results id section page
-function endGamePage() {
-    var gameScore = localStorage.getItem("score");                  //stores the score for ongoing game
-    var thisGameInitials = localStorage.getItem("initials");        //stores initials for player of for ongoing game
-    theScore.textContent = score;                                   //Prints the score
-    theInitials.textContent = initials;                             //prints the initials
+function endGame() {
+    clearInterval(timerInterval); //The interval is stopped
+    results.removeAttribute('class');  //The results section shows up
+    containerQuestions.setAttribute('class', 'hide');  // Questions dissappear
+    finalScore.textContent = startTime;     //shows time as the score
+    initials.textContent = initials;        //shows initials
   }
 
 
-//A function to keep the list of scores up to 5 games
+//A function to keep the list of scores
 function scoresList() {
-    var allGamesScores = [                          //declared var array to store games stats
+    initials = initials.value.trim();
+    finalScore = finalScore.value.stringtify;
+    submitBtn= submitBtn.count();
+
+    while (submitBtn.click()) {
+        initials.push(gameIntitals);
+        submitBtn.push(gameNumber);
+        finalScore.push(gameScore);
+    }
+
+    if(initials !== '') {
+        var finalInitials = JSON.parse(localStorage.getItem('initials'));
+        var highScores = JSON.parse(localStorage.getItem('finalScore'));
+        var thisSubmitBtn = JSON.parse(localStorage,getItem('submitBtn'));
+    }
+    highScoresList = [                          //declared var array to store games stats
         {
             gameNumber: "",                         //stores game number (tries)
-            gameIntitals: " ",                      //stores game initials
-            gameScore: " "                          //stores game score
+            gameIntitals: "",                      //stores game initials
+            gameScore: ""                          //stores game score
         }
     ]
-//need to write while loop to store game stats on high scores game
-//display or print final stats
+    return highScoresList;
+
 }
 
-
+submitBtn.onclick = scoresList;

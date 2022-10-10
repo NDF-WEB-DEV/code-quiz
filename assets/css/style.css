@@ -7,7 +7,15 @@ body {
     padding: 20px;
     margin: 0;
 }
-/** Top Section **/
+/** CONTROLS **/
+.hide {
+    visibility: hidden;
+}
+.show {
+    visibility: visible;
+}
+
+/** TOP SECTION **/
 .tops {
     display: flex;
     justify-content:space-between;
@@ -27,9 +35,14 @@ body {
     width: 100%;
 }
 .container-intro p {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
     line-height: auto;
 }
-.container-intro .intro #start{
+.container-intro .startButton{
     width: auto;
     padding: 10px 20px 10px 20px;
     color: #ffffff;
@@ -38,34 +51,161 @@ body {
     font-size: 18px;
     margin-top: 30px;
 }
-
-/** Content **/
-.hide {
-    display: none;
+.container-intro .startButton:hover{
+    width: auto;
+    padding: 10px 20px 10px 20px;
+    color: #ffffff;
+    background-color: rgb(243, 156, 204);
+    border-radius: 10px;
+    font-size: 18px;
+    margin-top: 30px;
+    border-width: 0px;
 }
-.show {
-    visibility: visible;
-}
 
-/** form **/
-.form-input {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-/** Scores Section **/
-.container-scores {
+/** QUESTIONAIRE SECTION **/
+.container-questions {
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
     width: 100%;
 }
-.container-scores .btns #goBackBtn, #clearListBtn  {
+
+/** RESULTS SECTION **/
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    vertical-align: middle;
+    width: 100%;
+    vertical-align: middle;
+}
+.results h2{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    vertical-align: middle;
+}
+.results p {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    vertical-align: middle;
+    font-size: 32px;
+}
+.results .initials {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    vertical-align: middle;
+    font-size: 26px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    width: 20%;
+}
+.results .submitBtn{
     width: auto;
     padding: 10px 20px 10px 20px;
     color: #ffffff;
     background-color: purple;
     border-radius: 10px;
     font-size: 18px;
-    margin-top: 30px;
+    margin: auto;
+}
+.results .submitBtn:hover{
+    width: auto;
+    padding: 10px 20px 10px 20px;
+    color: #ffffff;
+    background-color: rgb(243, 156, 204);
+    border-radius: 10px;
+    font-size: 18px;
+    margin: auto;
+}
+
+/** HIGH SCORES SECTION **/
+.highScoresSection {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    vertical-align: middle;
+}
+.highScoresSection h2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    vertical-align: middle;
+
+}
+.highScoresSection h2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    vertical-align: middle;
+}
+.highScoresSection h2 ol{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    vertical-align: middle;
+}
+
+li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    width: 30%;
+    vertical-align: middle;
+    background-color: rgb(250, 233, 250);
+    margin: auto;
+    padding: 10px;
+}
+.highScoresSection .btnsSection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    vertical-align: middle;
+}
+
+.highScoresSection .btnsSection #goBackBtn, #clearListBtn  {
+    display:inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    padding: 10px 15px 10px 15px;
+    color: #ffffff;
+    background-color: purple;
+    border-radius: 10px;
+    font-size: 18px;
+    margin: 5px;
+    vertical-align: middle;
 }
