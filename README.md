@@ -1,5 +1,7 @@
 # Code Quiz
 
+## **Project Link**
+* [Project GitHub Link](https://ndf-web-dev.github.io/code-quiz/)
 ## Description
 The motivation for building this multiple choice Code Quiz is to develop an application test the knowledge on basic web development concepts. The time limit of the application when started is 75 seconds and the player loses time everytime a wrong answer is recorded. At the end of the game your score is recorded. Addtionally a leaderboard is included as a link to view previous scores.
 
