@@ -66,9 +66,32 @@ body {
 .container-questions {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    vertical-align: middle;
+    width: 100%;
+    vertical-align: middle;
+    align-items: center;
+}
+.container-questions .questionTitle{
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     text-align: center;
     width: 100%;
+    line-height: auto;
+    align-items: center;
+}
+.container-questions .timerCountdown {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    line-height: auto;
+    top: 0;
+    right: 300px;
 }
 
 /** RESULTS SECTION **/
@@ -76,13 +99,14 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     justify-items: center;
     vertical-align: middle;
     width: 100%;
     vertical-align: middle;
+    align-items: center;
 }
-.results h2{
+.results h2 {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -121,7 +145,7 @@ body {
     margin-bottom: 15px;
     width: 20%;
 }
-.results .submitBtn{
+.results .submitBtn {
     width: auto;
     padding: 10px 20px 10px 20px;
     color: #ffffff;
@@ -130,7 +154,7 @@ body {
     font-size: 18px;
     margin: auto;
 }
-.results .submitBtn:hover{
+.results .submitBtn:hover {
     width: auto;
     padding: 10px 20px 10px 20px;
     color: #ffffff;

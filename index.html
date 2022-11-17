@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -15,24 +16,25 @@
   <!-- TOP SECTION -->
   <div id="tops" class="tops">
     <div id="leaderboard" class="leaderboard">
-      <a id="highScores" class="highScores" href="scores.html">View High Scores</a>
+      <a id="highScores" class="highScores" href="#highScoresSection">View High Scores</a>
     </div>
-    <div id="timeAtZero" class="timeAtZero show">Time: 0</div>
+    <div id="timeAtZero" class="timeAtZero">Time: 0</div>
   </div>
 
   <!-- INTRO SECTION -->
   <div id="container-intro" class="container-intro">
     <h1>Coding Quiz Challenge</h1>
-    <p>Try to answer the following code-related questions witin the time limit.</p>
+    <p>Try to answer the following code-related questions within the time limit.</p>
     <p>Keep in mind that incorrect answers will penalize your score/time by ten seconds!.</p>
     <button id="startButton" class="startButton">Start Quiz</button>
   </div>
 
   <!-- QUESTIONAIRE SECTION -->
-  <div id="container-questions" class="container-questions hide">
+  <div id="container-questions" class="container-questions show">
     <div id="questionTitle"></div>
     <div id="choices"></div>
     <div id="answer" class="answer"></div>
+    <p id="rightOrWrong" class="rightOrWrong"><span></span></p>
     <div id="timerCountdown" class="timerCountdown"></div>
   </div>
 
