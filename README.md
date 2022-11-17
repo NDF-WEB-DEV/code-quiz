@@ -14,7 +14,3 @@ N/A
 
 ## License
 N/A
-
-## Images
-See images directory for screenshot. 
-![Alt Initial Project] (../images/CodeQuiz-Lnadingpage.png)

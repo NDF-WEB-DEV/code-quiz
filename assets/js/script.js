@@ -73,7 +73,7 @@ function countdown() {
         if(timerCount == 0) {   //This line displays the text + remaining time in timer
             timerCount = finalScore.textContent;
             document.getElementById('finalScore').textContent;
-            // clearInterval(timer);
+            clearInterval(timer);
             endGame();
         }
     },1000);
